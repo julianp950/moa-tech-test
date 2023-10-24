@@ -1,3 +1,22 @@
+<mat-card class="header-card">
+  <mat-card-content>
+    <mat-card-header>
+      <mat-card-title>Welcome {{ userFullName }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-actions>
+      <button
+        (click)="doLogout()"
+        mat-raised-button
+        color="warn"
+        aria-label="Log Out"
+      >
+        <mat-icon>logout</mat-icon>
+        Logout
+      </button>
+    </mat-card-actions>
+  </mat-card-content>
+</mat-card>
+
 <button
   *ngIf="permissions.create == 'true'"
   (click)="addNewUser()"
@@ -8,7 +27,6 @@
   <mat-icon>add</mat-icon>
   Add New User
 </button>
-
 <mat-accordion>
   <mat-expansion-panel *ngFor="let user of users">
     <mat-expansion-panel-header>
@@ -29,11 +47,22 @@
       </mat-list>
     </p>
     <div (click)="editUser(user.id)" class="buttons-container">
-      <button *ngIf="permissions.update == 'true'" class="cta" mat-raised-button color="primary">
+      <button
+        *ngIf="permissions.update == 'true'"
+        class="cta"
+        mat-raised-button
+        color="primary"
+      >
         <mat-icon>edit</mat-icon>
         Edit User
       </button>
-      <button (click)="deleteUser(user.id)"class="cta" *ngIf="currentUser != user.id && permissions.delete == 'true'" mat-raised-button color="warn">
+      <button
+        (click)="deleteUser(user.id)"
+        class="cta"
+        *ngIf="currentUser != user.id && permissions.delete == 'true'"
+        mat-raised-button
+        color="warn"
+      >
         <mat-icon>delete_forever</mat-icon>
         Delete User
       </button>

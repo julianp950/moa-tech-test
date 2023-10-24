@@ -103,7 +103,6 @@ export class NewUserComponent {
         address: res.address,
         email: res.email,
         userName: res.userName,
-        password: res.password,
         role: res.role.id,
       });
     });

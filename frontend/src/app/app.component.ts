@@ -4,17 +4,9 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor (private router: Router) {}
   title = 'frontend';
-  userFullName: any = "";
-  ngOnInit() {
-    this.userFullName = localStorage.getItem("userFullName");
-  }
-
-  doLogout(): void {
-    this.router.navigate([`/logout`]);
-  }
+  ngOnInit() {}
 }

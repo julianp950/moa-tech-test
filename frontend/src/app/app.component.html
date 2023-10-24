@@ -1,17 +1,5 @@
 <mat-toolbar color="primary">
   <span>User Control Panel</span>
-  <span class="spacer"></span>
-  <div *ngIf="userFullName">
-    <span>{{ userFullName }}</span>
-    <button
-      (click)="doLogout()"
-      mat-icon-button
-      class="example-icon favorite-icon"
-      aria-label="Log Out"
-    >
-      <mat-icon>logout</mat-icon>
-    </button>
-  </div>
 </mat-toolbar>
 <div class="container">
   <router-outlet></router-outlet>

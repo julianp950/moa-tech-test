@@ -15,10 +15,12 @@ export class UsersDisplayComponent implements OnInit {
     delete: localStorage.getItem("delete")
   }
   currentUser: number = Number(localStorage.getItem("userId"));
+  userFullName: any = "";
 
   constructor(private usersService: UsersService, private router: Router) {}
 
   ngOnInit() {
+    this.userFullName = localStorage.getItem("userFullName");
     this.getUsers();
   }
 
@@ -38,5 +40,9 @@ export class UsersDisplayComponent implements OnInit {
 
   deleteUser(id: number) {
     this.usersService.deleteUser(id);
+  }
+
+  doLogout(): void {
+    this.router.navigate([`/logout`]);
   }
 }
