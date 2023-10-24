@@ -1,0 +1,76 @@
+<mat-card *ngIf="permissions.create == 'true' || permissions.update == 'true' ">
+  <mat-card-content>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input formControlName="name" matInput placeholder="Username" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Age</mat-label>
+        <input
+          type="number"
+          value="0"
+          formControlName="age"
+          matInput
+          placeholder="Age"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Phone</mat-label>
+        <input
+          type="tel"
+          formControlName="phone"
+          matInput
+          placeholder="Telephone number"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Address</mat-label>
+        <input
+          formControlName="address"
+          matInput
+          placeholder="Street address"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input type="email" formControlName="email" matInput placeholder="Ex. pat@example.com" />
+      </mat-form-field>
+
+      <!-- Login credentials -->
+      <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input formControlName="userName" matInput placeholder="Username" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          type="password"
+          placeholder="Password"
+          formControlName="password"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Role</mat-label>
+        <mat-select formControlName="role">
+          <mat-option *ngFor="let role of roles" value={{role.id}}>{{role.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+    <div class="buttons">
+        <button (click)="onSubmit(myForm)" mat-flat-button color="primary">Submit</button>
+        <button (click)="onCancel()" mat-flat-button color="warn">Cancel</button>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="permissions.create == 'false' && permissions.update == 'false'">
+  <mat-card-content>
+    <p>You do not have permission to access this section.</p>
+    <button (click)="onCancel()" mat-flat-button color="primary">Return</button>
+  </mat-card-content>
+</mat-card>

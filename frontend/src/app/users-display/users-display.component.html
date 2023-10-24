@@ -1,0 +1,42 @@
+<button
+  *ngIf="permissions.create == 'true'"
+  (click)="addNewUser()"
+  mat-raised-button
+  color="accent"
+  class="add-button"
+>
+  <mat-icon>add</mat-icon>
+  Add New User
+</button>
+
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let user of users">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon>account_circle</mat-icon>
+        {{ user.name }}
+      </mat-panel-title>
+      <mat-panel-description>
+        Role: {{ user.role.name }}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>
+      <mat-list>
+        <mat-list-item>Age: {{ user.age }}</mat-list-item>
+        <mat-list-item>Phone Number: {{ user.phone }}</mat-list-item>
+        <mat-list-item>Address: {{ user.address }}</mat-list-item>
+        <mat-list-item>Email: {{ user.email }}</mat-list-item>
+      </mat-list>
+    </p>
+    <div (click)="editUser(user.id)" class="buttons-container">
+      <button *ngIf="permissions.update == 'true'" class="cta" mat-raised-button color="primary">
+        <mat-icon>edit</mat-icon>
+        Edit User
+      </button>
+      <button (click)="deleteUser(user.id)"class="cta" *ngIf="currentUser != user.id && permissions.delete == 'true'" mat-raised-button color="warn">
+        <mat-icon>delete_forever</mat-icon>
+        Delete User
+      </button>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
