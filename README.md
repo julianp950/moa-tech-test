@@ -36,6 +36,6 @@ This project utilizes **[PostgreSQL 13](https://www.postgresql.org/)** and requi
 ### Backend
 The backend requires to be run using at least **[Java 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)**.
 
-For execution of the backend simply run `backend-0.0.1-SNAPSHOT.jar`.
+For execution of the backend simply run `backend-0.0.1-SNAPSHOT.jar`. It is suggested to do so with the following terminal command for a verbose monitoring: `java -jar ./backend-0.0.1-SNAPSHOT.jar`.
 
-It is suggested to do so with the following terminal command for a verbose monitoring: `java -jar ./backend-0.0.1-SNAPSHOT.jar`.
+The backend service is expected to run at port 8080.
