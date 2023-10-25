@@ -39,7 +39,11 @@ export class UsersDisplayComponent implements OnInit {
   }
 
   deleteUser(id: number) {
-    this.usersService.deleteUser(id);
+    this.usersService.deleteUser(id).subscribe(() => {
+      window.location.reload();
+    }, (err) => {
+      console.log("There was an error deleting user");
+    });
   }
 
   doLogout(): void {

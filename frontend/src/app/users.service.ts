@@ -54,15 +54,9 @@ export class UsersService {
     );
   }
 
-  deleteUser(id: number): void {
-    this.http.delete(
+  deleteUser(id: number): Observable<any> {
+    return this.http.delete(
       `http://${environment.ip}:${environment.port}/${this.entity}/deleteUser/${id}`, { headers: this.httpHeadersService.getHeaders() }
-    ).subscribe({
-      next: data => {
-      },
-      error: error => {
-          console.error('There was an error!', error);
-      }
-  });;
+    );
   }
 }

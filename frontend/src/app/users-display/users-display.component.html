@@ -46,8 +46,9 @@
         <mat-list-item>Email: {{ user.email }}</mat-list-item>
       </mat-list>
     </p>
-    <div (click)="editUser(user.id)" class="buttons-container">
+    <div class="buttons-container">
       <button
+        (click)="editUser(user.id)" 
         *ngIf="permissions.update == 'true'"
         class="cta"
         mat-raised-button

@@ -68,15 +68,11 @@ export class NewUserComponent {
       };
       if (!this.id) {
         this.usersService.postUser(user).subscribe({
-          next: (v) => console.log(v),
-          error: (e) => console.error(e),
           complete: () => this.router.navigate(['/users']),
         });
       } else {
         user.id = this.id;
         this.usersService.putUser(user, this.id).subscribe({
-          next: (v) => console.log(v),
-          error: (e) => console.error(e),
           complete: () => this.router.navigate(['/users']),
         });
       }
