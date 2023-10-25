@@ -3,9 +3,7 @@ import { LoginService } from '../login.service';
 import {
   FormBuilder,
   FormGroup,
-  UntypedFormBuilder,
   UntypedFormControl,
-  UntypedFormGroup,
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -33,6 +31,7 @@ export class LoginComponent {
   ) {}
 
   ngOnInit() {
+    this.checkIfLogged();
     if (localStorage.getItem('rememberMe')) {
       this.myForm.patchValue({
         userName: localStorage.getItem('userName'),
@@ -80,5 +79,14 @@ export class LoginComponent {
     localStorage.setItem('create', user.role.create);
     localStorage.setItem('update', user.role.update);
     localStorage.setItem('delete', user.role.delete);
+  }
+
+  checkIfLogged() {
+    let token: string = localStorage.getItem('token')!;
+    this.loginService.checkIfLogged(token).subscribe((data: boolean) => {
+      if (data) {
+        this.router.navigate(["/users"]);
+      }
+    });
   }
 }
